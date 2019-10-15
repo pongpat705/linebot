@@ -1,9 +1,16 @@
 package com.maoz.line.controllers;
 
+import com.linecorp.bot.model.event.MessageEvent;
+import com.linecorp.bot.model.event.message.TextMessageContent;
+import com.linecorp.bot.model.message.Message;
+import com.linecorp.bot.model.message.TextMessage;
+import com.linecorp.bot.spring.boot.annotation.EventMapping;
+import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +32,7 @@ public class ApiController {
         return result;
     }
 
-    @RequestMapping(value = "/input")
+    @RequestMapping(value = "/input", method = RequestMethod.POST)
     public Map<String, Object> input(HttpServletRequest request, HttpServletResponse response, @RequestBody String object){
         log.info("object input {}",object);
 
@@ -34,4 +41,6 @@ public class ApiController {
 
         return result;
     }
+
+
 }
