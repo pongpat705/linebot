@@ -23,6 +23,15 @@ public class ApiController {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public Map<String, Object> get(HttpServletRequest request, HttpServletResponse response){
+        log.info("called by ip {}",request.getRemoteAddr());
+        Map<String, Object> result = new HashMap<>();
+        result.put("status", "OK");
+
+        return result;
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Map<String, Object> index(HttpServletRequest request, HttpServletResponse response, @RequestBody String object){
         log.info("called by ip {}",request.getRemoteAddr());
