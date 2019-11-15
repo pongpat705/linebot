@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "line_log")
+@Table(name = "line_log", schema = "public")
 @Data
 public class LineLog {
     @Id
